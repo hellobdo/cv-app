@@ -1,15 +1,15 @@
 /* intro.css */
-.intro-container {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
     text-align: center;
+    flex-direction: column;
   }
   
   .intro-text {
-    display: inline-block;
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
@@ -20,6 +20,7 @@
     animation: blink 1s step-end infinite, typing 0.5s steps(400, end) forwards, hold 1s steps(1, end) forwards, typing-continue 2s steps(800, end) forwards, blink 1s step-end infinite;
     animation-delay: 0s, 4s, 5s, 6s;
     border-right: 2px solid black;
+    align-self: center;
   }
 
   @keyframes blink {
@@ -63,3 +64,5 @@
       width: calc(var(--total-count) * 1ch); /* Adjust this value to match the length of the remaining text */
     }
   }
+
+  

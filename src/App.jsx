@@ -1,10 +1,10 @@
-import Intro from "../components/Intro";
+import Flow from "../components/flow";
 
 function App() {
 
   return (
     <>
-      <Intro />
+      <Flow />
     </>
   )
 }
