@@ -1,0 +1,65 @@
+/* intro.css */
+.intro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+    text-align: center;
+  }
+  
+  .intro-text {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937; /* Tailwind's text-gray-900 */
+    overflow: hidden; /* Hide overflow text initially */
+    white-space: nowrap; /* Keep text on one line */
+    width: 0; /* Start with no width */
+    animation: blink 1s step-end infinite, typing 0.5s steps(400, end) forwards, hold 1s steps(1, end) forwards, typing-continue 2s steps(800, end) forwards, blink 1s step-end infinite;
+    animation-delay: 0s, 4s, 5s, 6s;
+    border-right: 2px solid black;
+  }
+
+  @keyframes blink {
+    0%, 100% {
+        border-right: 2px solid black;
+    }
+    40% {
+        border-right: 2px solid transparent;
+    }
+}
+  
+@keyframes typing {
+    from {
+      width: 0%;
+    }
+    to {
+      width: calc(var(--comma-count) * 1ch);
+    }
+  }
+
+  @keyframes hold {
+    from {
+      width: calc(var(--comma-count) * 1ch);
+    }
+    to {
+      width: calc(var(--comma-count) * 1ch);
+    }
+    100% {
+        border-right: 2px solid black;
+    }
+    50% {
+        border-right: 2px solid transparent;
+    }
+  }
+
+  @keyframes typing-continue {
+    from {
+      width: calc(var(--comma-count) * 1ch);
+    }
+    to {
+      width: calc(var(--total-count) * 1ch); /* Adjust this value to match the length of the remaining text */
+    }
+  }
