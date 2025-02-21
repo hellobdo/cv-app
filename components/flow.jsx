@@ -1,5 +1,5 @@
-import Animation from "../components/animation";
-import Intro from "../components/intro";
+import Animation from "./animation";
+import Intro from "./intro";
 import PersonalInfo from "./personal-info"; 
 import JobExperience from "./job-experience";
 import { useState } from "react";
