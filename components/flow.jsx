@@ -1,6 +1,6 @@
-import Intro from "../components/intro";
-import PersonalInfo from "./personal-info"; 
-import JobExperience from "./job-experience";
+import Intro from "../components/intro.jsx";
+import PersonalInfo from "./personal-info.jsx"; 
+import JobExperience from "./job-experience.jsx";
 import { useState } from "react";
 
 export default function Flow() {
