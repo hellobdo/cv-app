@@ -8,7 +8,7 @@ const totalChars = introText.length - 3;
 
 export default function Intro({ setShowIntro }) {
     return (
-        <div className="container">
+        <div className="intro-container">
             <div 
                 className="intro-text"
                 style= {{

@@ -1,67 +1,65 @@
+/* Hover effect */
+.yes:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-  
-  /* Hover effect */
-  .yes:hover {
-    background-color: #f5f5f5;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Active (click) effect */
+.yes:active {
+  background-color: #eaeaea;
+  transform: scale(0.98);
+}
+
+/* Focus effect */
+.yes:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .button {
+    background-color: #222;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
-  /* Active (click) effect */
-  .yes:active {
-    background-color: #eaeaea;
-    transform: scale(0.98);
+  .button:hover {
+    background-color: #333;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
   }
-  
-  /* Focus effect */
-  .yes:focus {
-    outline: none;
-    border-color: rgba(0, 0, 0, 0.2);
+  .button:active {
+    background-color: #444;
   }
-  
-  /* Dark mode styles */
-  @media (prefers-color-scheme: dark) {
-    .button {
-      background-color: #222;
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .button:hover {
-      background-color: #333;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-    }
-    .button:active {
-      background-color: #444;
-    }
-  }
-  
-  .yes {
-    width: 80px;
-    justify-self: center;
-    margin-top: 40px;
-    align-self: center;
+}
+
+.yes {
+  width: 80px;
+  justify-self: center;
+  margin-top: 40px;
+  align-self: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 8s; /* Delays the button animation until text is done */
+  padding: 12px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeInUp {
+  0% {
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease-out forwards;
-    animation-delay: 8s; /* Delays the button animation until text is done */
-    padding: 12px 12px;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: white;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
-  
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
