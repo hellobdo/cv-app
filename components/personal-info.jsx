@@ -48,7 +48,7 @@ export default function PersonalInfo({ setShowPersonalInfo }) {
   
     return (
       <>
-      <div className="container">
+      <div className="personal-info-container">
       {inputIds.map((id, index) => (
         <input
           key={id}

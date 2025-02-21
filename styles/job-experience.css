@@ -1,0 +1,120 @@
+.job-container {
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+}
+
+.job-experience {
+    flex: 0 0 40%;
+    text-align: left;
+    padding: 80px;
+}
+
+.inputs {
+    flex: 1;
+    height: 50vh;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid white; /* White border */
+    border-radius: 8px; /* Optional: Rounded corners */
+    padding: 20px; /* Ensure spacing inside the border */
+    margin-right: 60px
+}
+  
+  /* Show the active input */
+  .inputField {
+    opacity: 1;
+    height: 5%;
+    position: relative; /* Ensure it stacks properly */
+    z-index: 2;
+    width: 60%;
+  }
+    
+  
+  /* Ensure smooth focus outline */
+  input {
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    padding: 8px;
+    background: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Focus styling */
+  input:focus {
+    border-bottom: 2px solid #007bff;
+  }
+
+#dateFrom::-webkit-calendar-picker-indicator,
+#dateUntil::-webkit-calendar-picker-indicator {
+      filter: invert(0.5); /* Change icon color */
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+  }  
+
+#dateFrom, #dateUntil {
+    filter: invert(0.5); /* Change icon color */
+    cursor: pointer;
+    height: 20px;
+    width: 25%;
+}
+
+button {
+    margin-top: 10px;
+}
+
+#mainResponsibilities {
+    height: 80px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    resize: vertical;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    padding: 8px;
+    background: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+input::placeholder, textarea::placeholder {
+    font-family: inherit; /* Ensure consistent font family */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.job-entry {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.done {
+  height: 30px;
+  width: 60px;
+  align-self: flex-end;
+}
