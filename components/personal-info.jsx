@@ -5,6 +5,8 @@ export default function PersonalInfo() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const inputIds = ["firstName", "lastName", "email", "phone"];
   const inputRefs = useRef([]); // Store input references
+  const personalInfoRefs = [];
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   useEffect(() => {
     if (inputRefs.current[currentIndex]) {
@@ -13,13 +15,35 @@ export default function PersonalInfo() {
   }, [currentIndex]);
 
   const handleKeyPress = (event) => {
+    let value = event.target.value;
+    let id = event.target.id;
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission
+      if(id === "email" && !emailRegex.test(value)) {
+        return
+      }
+      personalInfoRefs.push(value);
+      console.log(personalInfoRefs);
       if (currentIndex < inputIds.length - 1) {
         setCurrentIndex((prev) => prev + 1);
       }
     }
   };
+
+
+  const handleChange = (e, id) => {
+    let value = e.target.value;
+    if (id === "email") {
+      !emailRegex.test(value);
+    } else if (id === "phone") {
+      // Allow only numbers
+      value = value.replace(/\D/g, ""); // Remove non-numeric characters
+    } else {
+      // Allow only letters and spaces
+      value = value.replace(/[^A-Za-z ]/g, "");
+    }
+    e.target.value = value; // Update the input field
+  };
+  
   
     return (
       <>
@@ -41,6 +65,7 @@ export default function PersonalInfo() {
               : "Your phone number right here"
           }
           className={index === currentIndex ? "visible" : "invisible"}
+          onChange={(e) => handleChange(e, id)}
           onKeyDown={handleKeyPress}
         />
       ))}
