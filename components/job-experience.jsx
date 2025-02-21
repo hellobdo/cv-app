@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export default function JobExperience({ setShowJob }) {
     return (
         <div className="container">
-          <button className="yes" onClick={() => setShowJob(false)}>Yes</button>
+          <h1>boda</h1>
         </div>
     );
 }
