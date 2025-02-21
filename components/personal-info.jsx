@@ -1,7 +1,8 @@
 import "../styles/personal-info.css";
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
-export default function PersonalInfo() {
+export default function PersonalInfo({ setShowPersonalInfo }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const inputIds = ["firstName", "lastName", "email", "phone"];
   const inputRefs = useRef([]); // Store input references
@@ -25,10 +26,11 @@ export default function PersonalInfo() {
       console.log(personalInfoRefs.current);
       if (currentIndex < inputIds.length - 1) {
         setCurrentIndex((prev) => prev + 1);
+      } else if (currentIndex === inputIds.length -1 ) {
+        setShowPersonalInfo(false);
       }
     }
   };
-
 
   const handleChange = (e, id) => {
     let value = e.target.value;
@@ -43,7 +45,6 @@ export default function PersonalInfo() {
     }
     e.target.value = value; // Update the input field
   };
-  
   
     return (
       <>
@@ -72,4 +73,8 @@ export default function PersonalInfo() {
       </div>
       </>
     )
+  }
+
+  PersonalInfo.propTypes = {
+      setShowPersonalInfo: PropTypes.func.isRequired,
   }
