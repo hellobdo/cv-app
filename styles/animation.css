@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6; /* Tailwind's bg-gray-100 */
+    text-align: center;
+    flex-direction: column;
+  }
+
+.loading {
+    animation: blink 0.8s infinite steps(1, start); /* ✅ Sharp blinking */
+    font-size: 24px;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
