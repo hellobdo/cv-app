@@ -5,7 +5,7 @@ export default function PersonalInfo() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const inputIds = ["firstName", "lastName", "email", "phone"];
   const inputRefs = useRef([]); // Store input references
-  const personalInfoRefs = [];
+  const personalInfoRefs = useRef([]);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   useEffect(() => {
@@ -21,8 +21,8 @@ export default function PersonalInfo() {
       if(id === "email" && !emailRegex.test(value)) {
         return
       }
-      personalInfoRefs.push(value);
-      console.log(personalInfoRefs);
+      personalInfoRefs.current.push(value);
+      console.log(personalInfoRefs.current);
       if (currentIndex < inputIds.length - 1) {
         setCurrentIndex((prev) => prev + 1);
       }
