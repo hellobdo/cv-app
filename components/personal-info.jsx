@@ -1,5 +1,5 @@
 import "../styles/personal-info.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from "prop-types";
 
 export default function PersonalInfo({ setShowPersonalInfo }) {
@@ -75,6 +75,6 @@ export default function PersonalInfo({ setShowPersonalInfo }) {
     )
   }
 
-  PersonalInfo.propTypes = {
-      setShowPersonalInfo: PropTypes.func.isRequired,
-  }
+PersonalInfo.propTypes = {
+    setShowPersonalInfo: PropTypes.func.isRequired,
+}

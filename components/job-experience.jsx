@@ -49,10 +49,15 @@ export default function JobExperience({ setShowJob }) {
     return (
         <div className="wrapper">
         <div className="header">
+            <div className="current-status">
+                <div className="firstName"></div>
+                <div className="lastName"></div>
+                <div className="email"></div>
+                <div className="phone"></div>
+            </div>
             <button 
                 className="done"
-                onClick={handleDoneButton}
-            >
+                onClick={handleDoneButton}>
                 Done
             </button>
         </div>

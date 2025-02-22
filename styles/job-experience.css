@@ -110,11 +110,15 @@ input::placeholder, textarea::placeholder {
 .header {
   height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .done {
   height: 30px;
   width: 60px;
-  align-self: flex-end;
+  align-self: right;
+}
+
+.current-status {
+  width: 150vh
 }
