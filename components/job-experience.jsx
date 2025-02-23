@@ -1,52 +1,21 @@
 import PropTypes from "prop-types";
 import "../styles/job-experience.css";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { PersonalInfoContext } from "../src/context/personal-info-context.jsx"
+import { useFormFunctions } from "../src/form-functions.jsx";
 
 export default function JobExperience({ setShowJob }) {
     const personalInfoRefs = useContext(PersonalInfoContext);
-    console.log(personalInfoRefs);
-    const [formData, setFormData] = useState({});
-    const [allEntries, setAllEntries] = useState([]);
     const inputIds = ["positionTitle", "companyName", "mainResponsibilities", "dateFrom", "dateUntil"];
 
-    const entries = () => {
-        setAllEntries([...allEntries, { ...formData }]);
-        console.log([...allEntries, { ...formData }]);
-        setFormData({}); 
-    };
-
-
-    const handleKeyPress = (event) => {
-        if (event.key === "Enter" && event.target.id === "dateUntil") {
-            entries();
-        }
-    };
-
-    const handleClickButton = () => {
-        const isAnyEmpty = inputIds.some((id) => !formData[id] || formData[id].trim() === "");
-        if (isAnyEmpty) {
-            return;
-        } else
-            entries();
-    }
-
-    const handleDoneButton = () => {
-        if (allEntries.length === 0) return
-        setShowJob(false);
-    }
-
-    const handleChange = (e, id) => {
-        let value = e.target.value;
-        if (id === "companyName" || id === "positionTitle" || id === "mainResponsibilities") {
-            value = value.replace(/[^A-Za-z ]/g, ""); // Allow only letters and spaces
-            e.target.value = value;
-        }
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: value
-        }));
-    }
+    const {
+        formData,
+        allEntries,
+        handleKeyPress,
+        handleClickButton,
+        handleDoneButton,
+        handleChange
+        } = useFormFunctions(setShowJob, inputIds);
 
     return (
         <>
