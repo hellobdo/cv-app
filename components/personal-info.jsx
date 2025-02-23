@@ -1,12 +1,13 @@
+import PropTypes from "prop-types";
 import "../styles/personal-info.css";
 import { useState, useEffect, useRef, useContext } from "react";
-import PropTypes from "prop-types";
+import { PersonalInfoContext } from "../src/context/personal-info-context";
 
-export default function PersonalInfo({ setShowPersonalInfo }) {
+export function PersonalInfo({ setShowPersonalInfo }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const inputIds = ["firstName", "lastName", "email", "phone"];
   const inputRefs = useRef([]); // Store input references
-  const personalInfoRefs = useRef([]);
+  const personalInfoRefs = useContext(PersonalInfoContext);
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function PersonalInfo({ setShowPersonalInfo }) {
       if(id === "email" && !emailRegex.test(value)) {
         return
       }
-      personalInfoRefs.current.push(value);
+      personalInfoRefs.current[id] = value;
       console.log(personalInfoRefs.current);
       if (currentIndex < inputIds.length - 1) {
         setCurrentIndex((prev) => prev + 1);
@@ -37,8 +38,11 @@ export default function PersonalInfo({ setShowPersonalInfo }) {
     if (id === "email") {
       !emailRegex.test(value);
     } else if (id === "phone") {
-      // Allow only numbers
-      value = value.replace(/\D/g, ""); // Remove non-numeric characters
+        if (value.charAt(0) === "+") {
+          value = "+" + value.slice(1).replace(/\D/g, "");
+        } else {
+          value = value.replace(/\D/g, ""); // Remove non-numeric characters
+        }
     } else {
       // Allow only letters and spaces
       value = value.replace(/[^A-Za-z ]/g, "");
@@ -47,7 +51,7 @@ export default function PersonalInfo({ setShowPersonalInfo }) {
   };
   
     return (
-      <>
+      <PersonalInfoContext.Provider value={personalInfoRefs}>
       <div className="personal-info-container">
       {inputIds.map((id, index) => (
         <input
@@ -71,10 +75,24 @@ export default function PersonalInfo({ setShowPersonalInfo }) {
         />
       ))}
       </div>
-      </>
+      </PersonalInfoContext.Provider>
     )
   }
+
+
+  export function PersonalInfoProvider({ children }) {
+  const personalInfoRefs = useRef([]);
+  return (
+    <PersonalInfoContext.Provider value={personalInfoRefs}>
+      {children}
+    </PersonalInfoContext.Provider>
+  );
+}
 
 PersonalInfo.propTypes = {
     setShowPersonalInfo: PropTypes.func.isRequired,
 }
+
+PersonalInfoProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

@@ -1,6 +1,6 @@
 import Animation from "./animation.jsx";
 import Intro from "./intro.jsx";
-import PersonalInfo from "./personal-info.jsx"; 
+import { PersonalInfo, PersonalInfoProvider } from "./personal-info.jsx"; 
 import JobExperience from "./job-experience.jsx";
 import Education from "./educational.jsx";
 import { useState } from "react";
@@ -13,7 +13,7 @@ export default function Flow() {
     const [showAnimation, setShowAnimation] = useState(false)
 
     return (
-      <>
+      <PersonalInfoProvider>
         {showIntro && <Intro setShowIntro={() => {
             setShowIntro(false);
             setShowAnimation(true);
@@ -31,6 +31,6 @@ export default function Flow() {
             setShowEducation(true);
         }}/>}
         {showEducation && <Education/>}
-      </>
+      </PersonalInfoProvider>
     )
   }
