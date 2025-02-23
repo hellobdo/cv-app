@@ -110,11 +110,32 @@ input::placeholder, textarea::placeholder {
 .header {
   height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  overflow: hidden;
 }
 
 .done {
   height: 30px;
   width: 60px;
-  align-self: flex-end;
+  align-self: center;
+}
+
+.personal-info {
+  display: grid;
+  grid-template-rows: repeat (2, 1fr);
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem;
+  width: 60vh;
+}
+
+.personal-info-item {
+  width: 20px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.header-right {
+  width: 100vh;
+  display: flex;
+  justify-content: right;
 }
